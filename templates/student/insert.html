@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block title %}
+    Create Student
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <form method="post">
+         {% csrf_token %}
+        <div class="mb-3">
+            <label>First Name</label>
+            <input type="text" name="firstName" placeholder="firstName" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Country</label>
+            <input type="text" name="country" placeholder="Country" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>City</label>
+            <input type="text" name="city" placeholder="City" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Staff</label>
+            <select class="form-select" name="staff_id">
+              {%for s in staff%}
+                    <option value="{{s.id}}">{{s.firstName}} {{ s.lastName }}</option>
+              {%endfor%}
+            </select>
+        </div>
+        <input type="submit" class="btn btn-primary"  value="insert student">
+    </form>
+    </div>
+
+{% endblock %}

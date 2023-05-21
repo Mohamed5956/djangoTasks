@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block title %}
+    Create Student
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <form method="post">
+        {% if message %}
+        <p class="alert alert-danger">{{ message }}</p>
+        {% endif %}
+         {% csrf_token %}
+         {{ form }}
+        <input type="submit" class="btn btn-primary" value="Login">
+    </form>
+    </div>
+
+{% endblock %}

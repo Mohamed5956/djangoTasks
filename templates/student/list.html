@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block title %}
+    List Students
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="table-responsive">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Staff Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for s in students %}
+    <tr>
+      <th scope="row">{{ s.id }}</th>
+      <th scope="row">{{ s.firstName }}</th>
+      <th scope="row">{{ s.lastName }}</th>
+      <th scope="row">{{ s.staff.firstName }} - {{ s.staff.lastName }}</th>
+      <th scope="row">{{ s.email }}</th>
+      <th scope="row">{{ s.country }} , {{ s.city }}</th>
+      <th scope="row">
+          <div class="d-flex">
+            <a class="btn btn-warning" href="{% url 'updatestudent' s.id %}">Update</a>
+            <a class="btn btn-danger mx-2" href="{% url 'deletestudent' s.id %}" >Delete</a>
+          </div>
+      </th>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
